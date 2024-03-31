@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks'
 import { TypeProduct } from '../../types/types'
 import { removeProduct } from '../../redux_components/reducers/todo'
@@ -12,7 +12,7 @@ export default function Home() {
 {
     products.length > 0 ? (
         products.map((el: TypeProduct, id:number)=>(
-            <div className='product'>
+            <div className='product' key={id}>
                 <img src={el.img} alt="image product" />
                 <h2>{el.title}</h2>
                 <p>${el.price}</p>

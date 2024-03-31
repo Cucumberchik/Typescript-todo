@@ -1,4 +1,4 @@
-import React from 'react'
+
 import logo from "../assets/logo.svg"
 import { NavLink } from 'react-router-dom'
 export const Navbar = () => {
