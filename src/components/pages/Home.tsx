@@ -1,9 +1,11 @@
 import React from 'react'
-import { useAppSelector } from '../../hooks/redux-hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks'
 import { TypeProduct } from '../../types/types'
+import { removeProduct } from '../../redux_components/reducers/todo'
 
 export default function Home() {
     let {products} = useAppSelector(state=> state.todo)
+    let dispatch = useAppDispatch()
   return (
     <section id='home'>
         <div className="conteiner">
@@ -14,6 +16,7 @@ export default function Home() {
                 <img src={el.img} alt="image product" />
                 <h2>{el.title}</h2>
                 <p>${el.price}</p>
+                <button onClick={()=>dispatch(removeProduct(el.id))}>Remove</button>
             </div>
         ))
     ): (

@@ -5,11 +5,11 @@ import { addProduct } from "../../redux_components/reducers/todo"
 
 
 export default function Admin() {
-    let [product, setProduct] = useState<TypeProduct>({title: "", price: "", img: ""})
+    let [product, setProduct] = useState<TypeProduct>({title: "", price: "", img: "",})
     let dispatch = useAppDispatch()
-    function handleProduct(){
+    function handleProduct():void{
         if(product.img && product.img && product.title){
-            dispatch(addProduct(product))
+            dispatch(addProduct({...product, id:Date.now()}))
             setProduct({title: "", price: "", img: ""})
         }else{
             alert("Где-то пусто")
@@ -27,7 +27,7 @@ export default function Admin() {
 
             <input onChange={(e)=>setProduct({...product, [e.target.name]: e.target.value})} 
             value={product.img} type="text" name="img" placeholder='URL image'/>
-            
+
             <button onClick={handleProduct}>Add</button>
         </div>
     </section>
